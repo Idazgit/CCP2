@@ -1,5 +1,5 @@
-CREATE TABLE `Contest` (
-  `contest_id` INTEGER PRIMARY KEY,
+CREATE TABLE `Giveaway` (
+  `giveaway_id` INTEGER PRIMARY KEY,
   `name` varchar(255),
   `prize` varchar(255),
   `draw_date` date
@@ -13,18 +13,18 @@ CREATE TABLE `Participant` (
 
 CREATE TABLE `Registration` (
   `participant_id` int,
-  `contest_id` int,
+  `giveaway_id` int,
   `registration_date` date,
-  PRIMARY KEY (`participant_id`, `contest_id`),
+  PRIMARY KEY (`participant_id`, `giveaway_id`),
   FOREIGN KEY (`participant_id`) REFERENCES `Participant` (`participant_id`),
-  FOREIGN KEY (`contest_id`) REFERENCES `Contest` (`contest_id`)
+  FOREIGN KEY (`giveaway_id`) REFERENCES `Giveaway` (`giveaway_id`)
 );
 
 CREATE TABLE `Winner` (
   `participant_id` int,
-  `contest_id` int,
+  `giveaway_id` int,
   `prize_won` varchar(255),
-  PRIMARY KEY (`participant_id`, `contest_id`),
+  PRIMARY KEY (`participant_id`, `giveaway_id`),
   FOREIGN KEY (`participant_id`) REFERENCES `Participant` (`participant_id`),
-  FOREIGN KEY (`contest_id`) REFERENCES `Contest` (`contest_id`)
+  FOREIGN KEY (`giveaway_id`) REFERENCES `Giveaway` (`giveaway_id`)
 );
