@@ -60,7 +60,7 @@ describe("participantRepository", () => {
   it("findById should return a participant when found", async () => {
     const result = await participantRepository.findById(1);
     expect(mockGet).toHaveBeenCalledWith(
-      "SELECT * FROM Participant WHERE id = ?",
+      "SELECT * FROM Participant WHERE participant_id = ?",
       1
     );
     expect(result).toEqual({
@@ -80,7 +80,7 @@ describe("participantRepository", () => {
     const participant = { id: 1, name: "Paul", email: "paul@mail.com" };
     const result = await participantRepository.update(participant);
     expect(mockRun).toHaveBeenCalledWith(
-      "UPDATE Participant SET name = ?, email = ? WHERE id = ?",
+      "UPDATE Participant SET name = ?, email = ? WHERE participant_id = ?",
       participant.name,
       participant.email,
       participant.id
@@ -91,7 +91,7 @@ describe("participantRepository", () => {
   it("delete should remove a participant and return changes", async () => {
     const result = await participantRepository.delete(1);
     expect(mockRun).toHaveBeenCalledWith(
-      "DELETE FROM Participant WHERE id = ?",
+      "DELETE FROM Participant WHERE participant_id = ?",
       1
     );
     expect(result).toEqual({ changes: 1 });
