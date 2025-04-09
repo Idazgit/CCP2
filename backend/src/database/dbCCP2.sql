@@ -14,7 +14,7 @@ CREATE TABLE `Participant` (
 CREATE TABLE `Registration` (
   `participant_id` int,
   `giveaway_id` int,
-  `registration_date` date,
+  `registration_date` date DEFAULT (DATE('now')),
   PRIMARY KEY (`participant_id`, `giveaway_id`),
   FOREIGN KEY (`participant_id`) REFERENCES `Participant` (`participant_id`),
   FOREIGN KEY (`giveaway_id`) REFERENCES `Giveaway` (`giveaway_id`)
