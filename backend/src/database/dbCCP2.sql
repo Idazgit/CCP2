@@ -13,7 +13,7 @@ CREATE TABLE `Participant` (
 
 CREATE TABLE `Registration` (
   `participant_id` int,
-  `Giveaway_id` int,
+  `giveaway_id` int,
   `registration_date` date,
   PRIMARY KEY (`participant_id`, `giveaway_id`),
   FOREIGN KEY (`participant_id`) REFERENCES `Participant` (`participant_id`),
@@ -26,5 +26,5 @@ CREATE TABLE `Winner` (
   `prize_won` varchar(255),
   PRIMARY KEY (`participant_id`, `giveaway_id`),
   FOREIGN KEY (`participant_id`) REFERENCES `Participant` (`participant_id`),
-  FOREIGN KEY (`Giveaway_id`) REFERENCES `Giveaway` (`giveaway_id`)
+  FOREIGN KEY (`giveaway_id`) REFERENCES `Giveaway` (`giveaway_id`)
 );
