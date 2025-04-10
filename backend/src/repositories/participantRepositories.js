@@ -16,12 +16,22 @@ export const participantRepository = {
     return participant;
   },
 
+  async findByEmail(email) {
+    const db = await openDb();
+    const participant = await db.get(
+      "SELECT * FROM Participant WHERE email = ?",
+      email
+    );
+    return participant;
+  },
+
   async create(participant) {
     const db = await openDb();
     const result = await db.run(
-      "INSERT INTO Participant (name, email) VALUES (?, ?)",
+      "INSERT INTO Participant (name, email, password) VALUES (?, ?, ?)",
       participant.name,
-      participant.email
+      participant.email,
+      participant.password
     );
     return {
       id: result.lastID,
@@ -31,9 +41,10 @@ export const participantRepository = {
   async update(participant) {
     const db = await openDb();
     const result = await db.run(
-      "UPDATE Participant SET name = ?, email = ? WHERE participant_id = ?",
+      "UPDATE Participant SET name = ?, email = ?, password = ? WHERE participant_id = ?",
       participant.name,
       participant.email,
+      participant.password,
       participant.id
     );
     return {
