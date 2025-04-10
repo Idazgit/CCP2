@@ -8,7 +8,8 @@ CREATE TABLE `Giveaway` (
 CREATE TABLE `Participant` (
   `participant_id` INTEGER PRIMARY KEY,
   `name` varchar(255),
-  `email` varchar(255)
+  `email` varchar(255),
+  `password` varchar(255),
 );
 
 CREATE TABLE `Registration` (

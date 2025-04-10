@@ -8,5 +8,6 @@ router.post("/", participantController.createParticipant);
 router.get("/:id", participantController.getParticipantById);
 router.put("/:id", participantController.updateParticipant);
 router.delete("/:id", participantController.deleteParticipant);
+router.post("/login", participantController.loginParticipant);
 
 export default router;

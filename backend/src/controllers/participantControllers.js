@@ -56,4 +56,28 @@ export const participantController = {
       res.status(500).json({ error: error.message });
     }
   },
+  async loginParticipant(req, res) {
+    try {
+      const { email, password } = req.body;
+
+      if (!email || !password) {
+        return res
+          .status(400)
+          .json({ error: "Email and password are required" });
+      }
+
+      const participant = await participantServices.authenticateParticipant(
+        email,
+        password
+      );
+
+      res.status(200).json({
+        success: true,
+        message: "Login successful",
+        data: participant, // Possibly include token after
+      });
+    } catch (error) {
+      res.status(401).json({ error: error.message });
+    }
+  },
 };
