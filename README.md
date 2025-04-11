@@ -80,7 +80,7 @@ CCP2/
 ### 1. Clone the project
 
 ```bash
-git clone <repository-link>
+git clone https://github.com/Idazgit/CCP2.git
 cd CCP2
 ```
 
