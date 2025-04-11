@@ -9,5 +9,6 @@ router.get("/:id", participantController.getParticipantById);
 router.put("/:id", participantController.updateParticipant);
 router.delete("/:id", participantController.deleteParticipant);
 router.post("/login", participantController.loginParticipant);
+router.get("/email/:email", participantController.getParticipantByEmail);
 
 export default router;

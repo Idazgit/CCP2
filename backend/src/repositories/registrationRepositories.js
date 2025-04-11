@@ -34,4 +34,16 @@ export const registrationRepository = {
     );
     return { changes: result.changes };
   },
+  async findParticipantsByGiveaway(giveaway_id) {
+    const db = await openDb();
+    return db.all(
+      `
+      SELECT P.participant_id, P.name, P.email
+      FROM Registration R
+      JOIN Participant P ON R.participant_id = P.participant_id
+      WHERE R.giveaway_id = ?
+    `,
+      giveaway_id
+    );
+  },
 };

@@ -14,6 +14,10 @@ export const winnerRepository = {
       giveaway_id
     );
   },
+  async findByGiveawayId(giveaway_id) {
+    const db = await openDb();
+    return db.get("SELECT * FROM Winner WHERE giveaway_id = ?", giveaway_id);
+  },
 
   async create(winner) {
     const db = await openDb();
@@ -34,5 +38,20 @@ export const winnerRepository = {
       giveaway_id
     );
     return { changes: result.changes };
+  },
+  async getResults() {
+    const db = await openDb();
+    const results = await db.all(`
+      SELECT 
+        G.name AS giveaway_name, 
+        P.name AS participant_name, 
+        P.email AS participant_email, 
+        W.prize_won 
+      FROM Winner W
+      JOIN Participant P ON W.participant_id = P.participant_id
+      JOIN Giveaway G ON W.giveaway_id = G.giveaway_id
+    `);
+
+    return results;
   },
 };

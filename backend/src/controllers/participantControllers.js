@@ -24,6 +24,15 @@ export const participantController = {
     }
   },
 
+  async getParticipantByEmail(req, res) {
+    const email = req.params.email;
+    const participant = await participantServices.getByEmail(email);
+    if (!participant) {
+      return res.status(404).json({ error: "Participant not found" });
+    }
+    res.json(participant);
+  },
+
   createParticipant: async (req, res) => {
     try {
       const participant = await participantServices.createParticipant(req.body);

@@ -46,6 +46,11 @@ export const participantServices = {
   getParticipantById(id) {
     return participantRepository.findById(id);
   },
+
+  getByEmail(email) {
+    return participantRepository.findByEmail(email);
+  },
+
   updateParticipant(id, participantData) {
     const updatedParticipant = new Participant(
       id,

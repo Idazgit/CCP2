@@ -1,4 +1,5 @@
 import { winnerServices } from "../services/winnerServices.js";
+import { winnerRepository } from "../repositories/winnerRepositories.js";
 
 export const winnerControllers = {
   async getAllWinners(req, res) {
@@ -47,6 +48,36 @@ export const winnerControllers = {
         return res.status(404).json({ error: "Winner not found" });
       }
       res.status(200).json({ message: "Winner deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+  async drawWinner(req, res) {
+    const giveaway_id = parseInt(req.params.giveaway_id, 10);
+
+    try {
+      const participant = await winnerServices.drawWinner(giveaway_id);
+
+      if (!participant) {
+        return res
+          .status(404)
+          .json({ error: "No participants registered for this giveaway." });
+      }
+
+      res.status(200).json({ participant });
+    } catch (error) {
+      if (error.message === "This giveaway has already been drawn.") {
+        return res
+          .status(400)
+          .json({ error: "This giveaway has already been drawn." });
+      }
+      res.status(500).json({ error: error.message });
+    }
+  },
+  async getResults(req, res) {
+    try {
+      const results = await winnerRepository.getResults();
+      res.status(200).json(results);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

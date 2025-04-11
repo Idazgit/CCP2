@@ -8,7 +8,7 @@ export class Registration {
     this.id = id;
     this.participant_id = participant_id;
     this.giveaway_id = giveaway_id;
-    this.registration_date = registration_date; // Défaut : date actuelle au format YYYY-MM-DD
+    this.registration_date = registration_date;
   }
 
   // Validation

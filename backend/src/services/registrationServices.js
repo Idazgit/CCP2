@@ -1,5 +1,6 @@
 import { registrationRepository } from "../repositories/registrationRepositories.js";
 import { Registration } from "../models/registrationModels.js";
+import { winnerRepository } from "../repositories/winnerRepositories.js";
 
 export const registrationServices = {
   getAllRegistrations() {
@@ -20,6 +21,15 @@ export const registrationServices = {
     const validation = registration.isValide();
     if (!validation.valide) {
       throw new Error(validation.message);
+    }
+
+    const existingWinner = await winnerRepository.findByGiveawayId(
+      participantData.giveaway_id
+    );
+    if (existingWinner) {
+      throw new Error(
+        "This giveaway has already been drawn. Registration is not allowed."
+      );
     }
 
     const exists = await registrationRepository.findById(

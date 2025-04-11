@@ -1,15 +1,15 @@
 CREATE TABLE `Giveaway` (
   `giveaway_id` INTEGER PRIMARY KEY,
   `name` varchar(255),
-  `prize` varchar(255),
+  `prize` REAL,
   `draw_date` date
 );
 
 CREATE TABLE `Participant` (
   `participant_id` INTEGER PRIMARY KEY,
   `name` varchar(255),
-  `email` varchar(255),
-  `password` varchar(255),
+  `email` varchar(255) UNIQUE,
+  `password` varchar(255)
 );
 
 CREATE TABLE `Registration` (
@@ -24,7 +24,7 @@ CREATE TABLE `Registration` (
 CREATE TABLE `Winner` (
   `participant_id` int,
   `giveaway_id` int,
-  `prize_won` varchar(255),
+  `prize_won` REAL,
   PRIMARY KEY (`participant_id`, `giveaway_id`),
   FOREIGN KEY (`participant_id`) REFERENCES `Participant` (`participant_id`),
   FOREIGN KEY (`giveaway_id`) REFERENCES `Giveaway` (`giveaway_id`)
