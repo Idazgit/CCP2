@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tirage au sort</title>
+    <link rel="stylesheet" href="/css/tirage.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/html/home.html">Accueil</a></li>
+          <li>
+            <a href="/html/inscription.html">Inscription</a>
+          </li>
+          <li>
+            <a href="/html/registration.html">Concours</a>
+          </li>
+          <li>
+            <a href="/html/tirage.html">Tirage au sort</a>
+          </li>
+          <li>
+            <a href="/html/giveaway.html">Créer un concours</a>
+          </li>
+          <li>
+            <a href="/html/results.html">Résultats</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Tirage au sort d'un concours</h2>
+      <form id="drawForm">
+        <label for="giveaway_id">Choisissez un concours :</label>
+        <select id="giveawaySelect" name="giveaway_id"></select>
+        <button type="submit">Tirer au sort</button>
+      </form>
+      <div id="winnerResult"></div>
+    </main>
+
+    <script src="/js/tirage.js"></script>
+  </body>
+</html>

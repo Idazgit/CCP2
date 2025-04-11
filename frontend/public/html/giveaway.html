@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Créer un concours</title>
+    <link rel="stylesheet" href="/css/giveaway.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/html/home.html">Accueil</a></li>
+          <li>
+            <a href="/html/inscription.html">Inscription</a>
+          </li>
+          <li>
+            <a href="/html/registration.html">Concours</a>
+          </li>
+          <li>
+            <a href="/html/tirage.html">Tirage au sort</a>
+          </li>
+          <li>
+            <a href="/html/giveaway.html">Créer un concours</a>
+          </li>
+          <li>
+            <a href="/html/results.html">Résultats</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Créer un concours</h2>
+      <form id="giveawayForm">
+        <label for="name">Nom du concours :</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          required
+          placeholder="Nom du concours"
+        />
+
+        <label for="prize">Prix :</label>
+        <input
+          type="number"
+          name="prize"
+          id="prize"
+          required
+          placeholder="Valeur du prix (en €)"
+        />
+
+        <label for="draw_date">Date du tirage :</label>
+        <input type="date" name="draw_date" id="draw_date" required />
+
+        <button type="submit">Créer le concours</button>
+      </form>
+      <div id="message"></div>
+    </main>
+
+    <script src="/js/giveaway.js"></script>
+  </body>
+</html>
